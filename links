@@ -1,0 +1,40 @@
+SELECT
+members.firstname AS "First Name",
+members.lastname AS "Last Name",
+count(*) AS "Number of books borrowed"
+FROM borrowings
+JOIN books ON borrowings.bookid=books.bookid
+JOIN members ON members.memberid=borrowings.memberid
+WHERE books.author='Dan Brown'
+GROUP BY members.firstname, members.lastname;
+
+SELECT `host6597_test`.`city` AS "Cities", count(*) AS "Count" FROM `host6597_test`.`city`
+
+А прошлые треды не запарсишь? Можешь старые анкеты в самый низ списка определить, что бы было понятно, что ответят врядли. Но некоторые отвечают. Я проверял
+http://arhivach.org/thread/190582/ -31 июля - 14августа 2016
+http://arhivach.org/thread/189462/ - 15 июля - 31 июля 2016
+http://arhivach.org/thread/184108/ - 30 июня - 15 июля 2016
+http://m2-ch.ru/soc/res/2946081.html - 17 июня - 30 июня 2016
+http://arhivach.org/thread/178183/ - 2 июня - 17 июня 2016
+http://arhivach.org/thread/176289/ - 18 мая - 2 июня 2016
+http://arhivach.org/thread/172586/ - 2 мая - 18 мая 2016
+15 апреля - 2 мая - no data
+http://arhivach.org/thread/161394/ - 31 марта - 15 апреля 2016
+http://m2-ch.ru/soc/res/2549725.html - 19 марта - 31 марта 2016
+http://m2-ch.ru/soc/res/2454608.html - 29 февраля - 19 марта 2016
+http://m2-ch.ru/soc/res/2384431.html - 14 февраля - 29 февраля 2016
+2 февраля - 14 февраля - no data
+http://arhivach.org/thread/141153/ - 21 января - 2 февраля 2016
+http://arhivach.org/thread/139397/ - 11 января - 21 января 2016
+http://m2-ch.ru/soc/res/2199843.html - 1 января - 11 января 2016
+http://m2-ch.ru/soc/res/2164586.html - 22 декабря - 1 января 2016
+http://arhivach.org/thread/131758/ - 10 декабря - 22 декабря 2015
+http://m2-ch.ru/soc/res/2096883.html - 29 ноября - 10 декабря 2015
+http://m2-ch.ru/soc/res/2072984.html - 17 ноября - 29 ноября 2015
+http://arhivach.org/thread/122010/ - 3 ноября - 17 ноября 2015
+19 октября - 3 ноября - no data
+http://m2-ch.ru/soc/res/1978960.html - 5 октября - 19 октября 2015
+http://arhivach.org/thread/111051/ - 20 сентября - 5 октября 2015
+13 сентября - 20 сентября - no data
+http://m2-ch.ru/soc/res/1925297.html - 20 августа - 13 сентября 2015
+http://m2-ch.ru/soc/res/1901876.html - 5 августа - 20 августа 2015
