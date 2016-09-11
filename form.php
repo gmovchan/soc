@@ -26,10 +26,14 @@
 
           while ($row = $result->fetch_assoc()) {
             if ($row["city"] == '') {
-              echo '<option value="unknow">Не определен ('.$row["count"].')</option>';
+              echo '<option value="">Не определен ('.$row["count"].')</option>';
               continue;
             }
-            echo '<option value="'.$row["city"].'">'.$row["city"].' ('.$row["count"].')</option>';
+            if ($row["city"] == $_POST['city']) {
+              echo '<option value="'.$row["city"].'" selected>'.$row["city"].' ('.$row["count"].')</option>';
+            } else {
+              echo '<option value="'.$row["city"].'">'.$row["city"].' ('.$row["count"].')</option>';
+            }
           }
 
           $result->free();
@@ -40,15 +44,53 @@
     </select>
     <label for="gender">Пол в анкете</label>
     <select class="form-control" name="gender">
-      <option value="unknow">Неизвестно</option>
-      <option value="male">Парень</option>
-      <option value="female">Девушка</option>
+      <option value="">Неизвестно</option>
+      <?php
+        if ($_POST['gender'] == "male") {
+          echo '
+            <option value="male" selected>Парень</option>
+          ';
+        } else {
+          echo '
+            <option value="male">Парень</option>
+          ';
+        }
+
+        if ($_POST['gender'] == "female") {
+          echo '
+            <option value="female" selected>Девушка</option>
+          ';
+        } else {
+          echo '
+            <option value="female">Девушка</option>
+          ';
+        }
+      ?>
     </select>
     <label for="targetGender">Кого ищет</label>
     <select class="form-control" name="targetGender">
-      <option value="unknow">Неизвестно</option>
-      <option value="male">Пареня</option>
-      <option value="female">Девушку</option>
+      <option value="">Неизвестно</option>
+      <?php
+        if ($_POST['targetGender'] == "male") {
+          echo '
+            <option value="male" selected>Пареня</option>
+          ';
+        } else {
+          echo '
+            <option value="male">Пареня</option>
+          ';
+        }
+
+        if ($_POST['targetGender'] == "female") {
+          echo '
+            <option value="female" selected>Девушку</option>
+          ';
+        } else {
+          echo '
+            <option value="female">Девушку</option>
+          ';
+        }
+      ?>
     </select>
   </div>
   <button type="submit" name="button" class="btn btn-primary">Показать</button>

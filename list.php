@@ -2,11 +2,7 @@
   $city = $_POST['city'];
   $gender = $_POST['gender'];
   $targetGender = $_POST['targetGender'];
-/*
-  if ($city == 'unknow') {
-    $city = '';
-  }
-*/
+
   require_once('config.php');
   $mysqliList = new mysqli(
   $host,
@@ -24,9 +20,38 @@
 //    printf("Текущий набор символов: %s\n", $mysqli->character_set_name());
   }
 
-  $queryList = "SELECT `id`, `from`, `description`, `target`, `contacts`, `timestamp` FROM `soc` WHERE `city`='$city' AND `gender`='$gender' AND `targetGender`='$targetGender' ORDER BY `timestamp` DESC";
+  if ($city) {
+    $city = "`city`='".$city."'";
+  } else {
+    $city = "";
+  }
+
+  if ($city && $gender) {
+    $gender = "AND `gender`='".$gender."'";
+  } else if (!$city && $gender) {
+    $gender = "`gender`='".$gender."'";
+  } else{
+    $gender = "";
+  }
+
+  if ($gender && $targetGender) {
+    $targetGender = "AND `targetGender`='".$targetGender."'";
+  } else if (!$city && !$gender && $targetGender) {
+    $targetGender = "`targetGender`='".$targetGender."'";
+  } else{
+    $targetGender = "";
+  }
+
+  if (!$city && !$gender && !$targetGender) {
+    $where = "";
+  } else {
+    $where = "WHERE";
+  }
+
+  $queryList = "SELECT `id`, `from`, `description`, `target`, `contacts`, `timestamp` FROM `soc` ".$where." ".$city." ".$gender." ".$targetGender." ORDER BY `timestamp` DESC";
 
   require_once("header.php");
+//  echo $queryList;
   ?>
     <br>
 
@@ -124,8 +149,6 @@
 
                 </div>';
           }
-
-
 
         }
         $resultList->free();
